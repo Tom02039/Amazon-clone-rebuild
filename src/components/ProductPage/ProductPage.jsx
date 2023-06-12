@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { ProductDetails } from "../";
 import { callAPI } from "../../utils/CallApi";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cartSlice";
 
 const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState("1");
+  const dispatch = useDispatch();
 
   const getProduct = () => {
     callAPI("data/products.json").then((productResults) => {
@@ -13,10 +17,16 @@ const ProductPage = () => {
     });
   };
 
+  const addQuantityToProduct = () => {
+    setProduct((product.quantity = quantity));
+    return product;
+  };
+
   useEffect(() => {
     getProduct();
   }, []);
 
+  console.log(!product?.title);
   if (!product?.title) return <h1>Loading Product...</h1>;
 
   return (
@@ -49,14 +59,24 @@ const ProductPage = () => {
             <div className="text-green-500 font-semibold mt-1">In Stock</div>
             <div className="text-base xl:text-lg mt-1">
               Quantity:
-              <select className="border border-gray-200 p-2 ml-2">
+              <select
+                onChange={(e) => setQuantity(e.target.value)}
+                className="border border-gray-200 p-2 ml-2"
+              >
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
               </select>
             </div>
-            <button className="btn">Add to Cart</button>
+            <Link to={"/checkout"}>
+              <button
+                onClick={() => dispatch(addToCart(addQuantityToProduct()))}
+                className="btn"
+              >
+                Add to Cart
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const CarouselProduct = () => {
   return (
     <div className="bg-white m-3 p-3">
-      <div className="text-xl xl:text-2xl font-semibold m-3">Best Sellerss</div>
+      <div className="text-xl xl:text-2xl font-semibold m-3">Best Sellers</div>
       <Swiper
         slidesPerView={7}
         spaceBetween={10}

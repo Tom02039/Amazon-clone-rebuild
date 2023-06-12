@@ -10,7 +10,7 @@ const ProductBadge = ({ badge }) => {
   } else if (badge === "choice") {
     return (
       <span className="bg-amazonclone text-white font-semibold text-xs xl:text-sm p-1">
-        Amazon's <span className="text-orange-500 ">Choice</span>
+        Amazon's <span className="text-orange-400 ">Choice</span>
       </span>
     );
   } else if (badge === "limited") {

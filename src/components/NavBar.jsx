@@ -6,8 +6,11 @@ import {
   Bars3Icon,
 } from "@heroicons/react/24/outline";
 import USIcon from "./united-states.png";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const cartQuantity = useSelector((state) => state.cart.productsNumber);
+
   return (
     <header className="min-w-[1000px]">
       <div className="bg-amazonclone flex text-white h-[60px]">
@@ -49,10 +52,17 @@ const NavBar = () => {
             <div className="text-xs leading-3">Returns</div>
             <div className="text-sm font-bold">& Orders</div>
           </div>
-          <div className="flex items-end">
-            <ShoppingCartIcon className="h-[36px]" />
-            <div className="font-bold">Cart</div>
-          </div>
+          <Link to={"/checkout"}>
+            <div className="flex items-end relative">
+              <ShoppingCartIcon className="h-[36px]" />
+              <div className="font-bold">Cart</div>
+              <div className="absolute top-0.5 left-3.5">
+                <span className="font-bold text-orange-500">
+                  {cartQuantity}
+                </span>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="flex gap-6 bg-amazonclone-light_blue text-white text-sm p-2 pl-6">
