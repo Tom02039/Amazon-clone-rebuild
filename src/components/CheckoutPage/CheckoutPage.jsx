@@ -78,10 +78,12 @@ const CheckoutPage = () => {
                 </div>
               </div>
             ))}
-            <div className="text-xl xl:text-2xl text-right mb-4 mr-10">
-              Subtotal ({itemsNumber} item):{" "}
-              <span className="font-semibold">${subtotal}</span>
-            </div>
+            {subtotal > 0 && (
+              <div className="text-xl xl:text-2xl text-right mb-4 mr-10">
+                Subtotal ({itemsNumber} item):{" "}
+                <span className="font-semibold">${subtotal}</span>
+              </div>
+            )}
           </div>
           <div className="col-span-2 h-[250px] rounded bg-white p-7">
             <div className="text-xs xl:text-sm text-green-600 mb-2">
