@@ -1,4 +1,5 @@
 import { Search } from "./";
+import { Link } from "react-router-dom";
 import {
   MapPinIcon,
   ShoppingCartIcon,
@@ -11,11 +12,13 @@ const NavBar = () => {
     <header className="min-w-[1000px]">
       <div className="bg-amazonclone flex text-white h-[60px]">
         <div className="flex items-center m-3">
-          <img
-            className="h-[30px] w-[100px]  m-2"
-            alt="logo"
-            src={"../images/amazon.png"}
-          />
+          <Link to={"/"}>
+            <img
+              className="h-[30px] w-[100px]  m-2"
+              alt="logo"
+              src={"../images/amazon.png"}
+            />
+          </Link>
           <div className="grid grid-cols-[min_content_1fr] ml-2">
             <div className="row-start-2">
               <MapPinIcon className="h-[20px]" />
@@ -26,7 +29,7 @@ const NavBar = () => {
             <div className="col-start-2 text-sm font-bold">United States</div>
           </div>
         </div>
-        <div className=" flex items-center grow m-4">
+        <div className=" flex items-center grow relative m-4">
           <Search />
         </div>
         <div className="flex items-center gap-9 m-4">

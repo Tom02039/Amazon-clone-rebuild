@@ -3,6 +3,7 @@ import { Navigation } from "swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { Link } from "react-router-dom";
 
 const CarouselProduct = () => {
   return (
@@ -17,7 +18,13 @@ const CarouselProduct = () => {
       >
         {Array.from({ length: 9 }, (_, i) => (
           <SwiperSlide key={i}>
-            <img alt="product" src={`../images/product_${i}_small.jpg`} />
+            <Link to={`/product/${i}`}>
+              <img
+                className="cursor-pointer"
+                alt="product"
+                src={`../images/product_${i}_small.jpg`}
+              />
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
